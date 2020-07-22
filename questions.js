@@ -1,7 +1,7 @@
-var lit1 = ["This author is best known for writing the Harry Potter series.", "JK Rowling", "literature", 400, true];
-var lit2 = ["Don Quixote was originally written in this language.", "Spanish", "literature", 800, true];
+var lit1 = ["This author is best known for writing the Harry Potter series.", "JK Rowling", "Literature", 400, true];
+var lit2 = ["Don Quixote was originally written in this language.", "Spanish", "Literature", 800, true];
 var lit3 = ["This character was the mentor for Katniss and Peeta in The Hunger Games.", "Haymitch", "Literature", 1200, true];
-var lit4 = ["Upton Sinclair refers to the Chicago stockyards as Packingtown in this 1906 novel.", "The Jungle", "Literature", 2000, true];
+var lit4 = ["Upton Sinclair refers to the Chicago stockyards as Packingtown in this 1906 novel.", "The Jungle", "Literature", 1600, true];
 var lit5 = ["F. Scott Fitzgerald died with this fifth novel unfinished.", "The Love of the Last Tycoon", "Literature", 2000, true];
 
 var sci1 = ["About one-millionth as bright as our sun, these small red stars are also known as flare stars.", "Dwarf Stars", "Science", 400, true];
@@ -23,7 +23,7 @@ var music4 = ["In 2018, this artist announced that his 3-year Farewell Yellow Br
 var music5 = ["In 1826, at just 17, he produced the dazzling Midsummer Night's Dream Overture.", "Felix Mendelssohn", "Music", 2000, true];
 
 var sports1 = ["The Olympics are held once every this amount of years.", "Four", "Sports", 400, true];
-var sports2 = ["This woman has won the most tennis grand slams.", "Serene Williams", "Sports", 800, true];
+var sports2 = ["This woman has won the most tennis grand slams.", "Serena Williams", "Sports", 800, true];
 var sports3 = ["This sport is Canada's national sport.", "Lacrosse", "Sports", 1200, true];
 var sports4 = ["This American Football team won the first two Super Bowls.", "Green Bay Packers", "Sports", 1600, true];
 var sports5 = ["This country won the first ever soccer World Cup in 1930.", "Uruguay", "Sports", 2000, true];
