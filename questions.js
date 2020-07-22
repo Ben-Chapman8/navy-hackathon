@@ -25,7 +25,7 @@ $(document).ready(function(){
         var music5 = ["In 1826, at just 17, he produced the dazzling Midsummer Night's Dream Overture.", "Felix Mendelssohn", "Music", 500, true];
 
         var sports1 = ["The Olympics are held once every this amount of years.", "Four", "Sports", 100, true];
-        var sports2 = ["This woman has won the most tennis grand slams.", "Serene Williams", "Sports", 200, true];
+        var sports2 = ["This woman has won the most tennis grand slams.", "Serena Williams", "Sports", 200, true];
         var sports3 = ["This sport is Canada's national sport.", "Lacrosse", "Sports", 300, true];
         var sports4 = ["This American Football team won the first two Super Bowls.", "Green Bay Packers", "Sports", 400, true];
         var sports5 = ["This country won the first ever soccer World Cup in 1930.", "Uruguay", "Sports", 500, true];
