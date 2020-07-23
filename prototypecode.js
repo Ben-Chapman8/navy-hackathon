@@ -47,8 +47,8 @@ function checkAnswer(x, y) {
         alert("Congrats you got it right!");
         player(questions, whatClicked);
         questions--;
-        document.getElementById("player1box").textContent = ("Player 1:" + player1points + " points");
-        document.getElementById("player2box").textContent = ("Player 2:" + player2points + " points");
+        document.getElementById("player1box").textContent = ("Player 1: " + player1points + " points");
+        document.getElementById("player2box").textContent = ("Player 2: " + player2points + " points");
         document.getElementById("questionsbox").textContent = ("Questions left: " + questions);
     }
     else {
