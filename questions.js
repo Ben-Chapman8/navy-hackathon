@@ -85,7 +85,7 @@ $(document).ready(function(){
             }
         }
         $("#submit").on("click", function(){
-            alternator(questions);
+            alternator(turn);
             var guess = getAnswer();
             if(checkAnswer(guess, question)){
                 points(turn, question);
