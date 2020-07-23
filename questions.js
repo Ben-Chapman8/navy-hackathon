@@ -74,14 +74,27 @@ $(document).ready(function(){
     var guessing = false;
     if(questions > 0){
 
+        function alternator(x) {
+            if(x % 2 == 0) {
+                document.getElementById("player1box").style.color = "white";
+                document.getElementById("player2box").style.color = "green";
+            }
+            else {
+                document.getElementById("player2box").style.color = "white";
+                document.getElementById("player1box").style.color = "green";
+            }
+        }
         $("#submit").on("click", function(){
+            alternator(questions);
             var guess = getAnswer();
             if(checkAnswer(guess, question)){
                 points(turn, question);
                 questions--;
                 question[4] = false;
-                $(questionID).css("color", "royalblue");
+                $(questionID).css("color", "#060CE9");
+                $(questionID).css("text-shadow", "#060CE9");
                 $("#questionBox").text("");
+                document.getElementById("questionsbox").textContent = ("Questions left: " + questions);
             }
             turn++;
             guessing = false;
