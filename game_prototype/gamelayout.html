@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <meta charset="UTF-8">
+    
+        <title>JEOPARDY!</title>
+    
+        <style>
+            div{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #060CE9;
+                text-align: center;
+                outline: 5px solid black;
+                text-shadow: 2px 2px black;
+            }
+            h1{
+                color:#FFCC00;
+            }
+        </style>
+    
+    </head>
+    
+    <body>
+​
+        <div class="container" style="position:relative; top:200px">
+​
+            <!-- Row 1: Category Headers -->
+            <div class="row" style="color: #ffffff">
+                <div class="col-2">
+                    <h1 style="font-size: 35px">SCIENCE</h1>
+                </div>
+                <div class="col-2">
+                    <h1 style="font-size: 25px">LITERATURE</h1>
+                </div>
+                <div class="col-2">
+                    <h1 style="font-size: 25px">WORLD <br> HISTORY</h1>
+                </div>
+                <div class="col-2">
+                    <h1 style="font-size: 35px">SPORTS</h1>
+                </div>
+                <div class="col-2">
+                    <h1 style="font-size: 35px">MOVIES</h1>
+                </div>
+                <div class="col-2">
+                    <h1 style="font-size: 35px">MUSIC</h1>
+                </div>
+            </div>
+            
+            <!-- Row 2: $100 Questions -->
+            <div class="row" style="color:#FFCC00" >
+                <div class="col-2 btn" id="science-1">
+                    <h1>$100</h1>
+                </div>
+                <div class="col-2 btn" id="Literature-1">
+                    <h1>$100</h1>
+                </div>
+                <div class="col-2 btn" id="History-1">
+                    <h1>$100</h1>
+                </div>
+                <div class="col-2 btn" id="Sports-1">
+                    <h1>$100</h1>
+                </div>
+                <div class="col-2 btn" id="movies-1">
+                    <h1>$100</h1>
+                </div>
+                <div class="col-2 btn" id="Music-1">
+                    <h1>$100</h1>
+                </div>
+            </div>
+        
+            <!-- Row 3: $200 Questions -->
+            <div class="row" style="color:#FFCC00">
+                <div class="col-2 btn" id="science-2">
+                    <h1>$200</h1>
+                </div>
+                <div class="col-2 btn" id="Literature-2">
+                    <h1>$200</h1>
+                </div>
+                <div class="col-2 btn" id="History-2">
+                    <h1>$200</h1>
+                </div>
+                <div class="col-2 btn" id="Sports-2">
+                    <h1>$200</h1>
+                </div>
+                <div class="col-2 btn" id="movies-2">
+                    <h1>$200</h1>
+                </div>
+                <div class="col-2 btn" id="Music-2">
+                    <h1>$200</h1>
+                </div>
+            </div>
+​
+            <!-- Row 4: $300 Questions -->
+            <div class="row" style="color:#FFCC00">
+                <div class="col-2 btn" id="science-3">
+                    <h1>$300</h1>
+                </div>
+                <div class="col-2 btn" id="Literature-3">
+                    <h1>$300</h1>
+                </div>
+                <div class="col-2 btn" id="History-3">
+                    <h1>$300</h1>
+                </div>
+                <div class="col-2 btn" id="Sports-3">
+                    <h1>$300</h1>
+                </div>
+                <div class="col-2 btn" id="movies-3">
+                    <h1>$300</h1>
+                </div>
+                <div class="col-2 btn" id="Music-3">
+                    <h1>$300</h1>
+                </div>
+            </div>
+​
+            <!-- Row 5: $400 Questions -->
+            <div class="row" style="color:#FFCC00">
+                <div class="col-2 btn" id="science-4">
+                    <h1>$400</h1>
+                </div>
+                <div class="col-2 btn" id="Literature-4">
+                    <h1>$400</h1>
+                </div>
+                <div class="col-2 btn" id="History-4">
+                    <h1>$400</h1>
+                </div>
+                <div class="col-2 btn" id="Sports-4">
+                    <h1>$400</h1>
+                </div>
+                <div class="col-2 btn" id="movies-4">
+                    <h1>$400</h1>
+                </div>
+                <div class="col-2 btn" id="Music-4">
+                    <h1>$400</h1>
+                </div>
+            </div>
+​
+            <!-- Row 6: $500 Questions -->
+            <div class="row" style="color:#FFCC00">
+                <div class="col-2 btn" id="science-5">
+                    <h1>$500</h1>
+                </div>
+                <div class="col-2 btn" id="Literature-5">
+                    <h1>$500</h1>
+                </div>
+                <div class="col-2 btn" id="History-5">
+                    <h1>$500</h1>
+                </div>
+                <div class="col-2 btn" id="Sports-5">
+                    <h1>$500</h1>
+                </div>
+                <div class="col-2 btn" id="movies-5">
+                    <h1>$500</h1>
+                </div>
+                <div class="col-2 btn" id="Music-5">
+                    <h1>$500</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" style="font-size:30px;color:white;text-align:center" id="player1box">Player 1: 0 points</div>
+                <div class="col-4" style="font-size:30px;color:white;text-align:center" id="player2box">Player 2: 0 points</div>
+                <div class="col-4" style="font-size:30px;color:white;text-align:center" id="questionsbox">Questions left: 30</div>    
+            </div>
+        </div>
+​        <script src="gamecode.js"></script>   
+    </body>
+</html>
