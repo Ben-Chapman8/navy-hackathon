@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    $("#inputBox").hide();
+    $("#gameover").hide()
     if(true){
         var lit1 = ["This author is best known for writing the Harry Potter series.", "JK Rowling", "literature", 100, true];
         var lit2 = ["Don Quixote was originally written in this language.", "Spanish", "literature", 200, true];
@@ -42,6 +44,7 @@ $(document).ready(function(){
     var player2points = 0;
     var turn = 0;
 
+
     function checkAnswer(guess, correctAnswer){
         if(guess == "4"){
             guess = "four";
@@ -54,11 +57,29 @@ $(document).ready(function(){
     function points(turnNum, question){
         if(turnNum % 2 ==0){
             player1points += question[3];
+            $("#player1box").text("Player 1: " + player1points + " points");
         }
         else {
             player2points += question[3];
+            $("#player2box").text("Player 2: " + player2points + " points");
         }
     }
+    function showInput(){
+        $("#inputBox").show();
+    }
+    function getAnswer(){
+        var input = $("#userInput").val();
+        alert(input);
+    }
+
+    // $(document).on("click", function(){
+    //     showInput();
+    // });
+
+    // $("#submit").on("click",function(){
+    //     getAnswer();
+    // });
+
     if(questions > 0){
 
         $("#Literature-1").on("click", function(){
@@ -452,26 +473,18 @@ $(document).ready(function(){
         })
     }
 
+    $(document).on("click", function(){
     if(questions <= 0){
-        var div = document.createElement("div");
-        div.style.width = "200px";
-        div.style.height = "200px";
-        div.style.backgroundColor = "royalblue";
-        div.style.fontFamily = "fantasy";
-        div.style.fontSize = "larger";
-        div.style.color = "white";
-        div.style.textAlign = "center";
-        document.appendChild(div);
-        div.style.position = "fixed";
-        div.style.top = "25%";
+        
+        $("#gameover").show();
         if(player1points > player2points){    
-            div.innerHTML = "Player 1 wins with " + player1points + " points!";
+            $("#gameover").text("Player 1 wins with " + player1points + " points!");
         }
         else if(player1points < player2points){    
-            div.innerHTML = "Player 2 wins with " + player2points + " points!";
+            $("#gameover").text("Player 2 wins with " + player2points + " points!");
         }
         else {    
-            div.innerHTML = "It's a tie with " + player2points + " points for both players!";
+            $("#gameover").text("It's a tie with " + player2points + " points for both players!");
         }
-    }
+    }});
 });
