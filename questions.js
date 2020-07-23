@@ -70,12 +70,12 @@ $(document).ready(function(){
 
     function alternator(x) {
         if(x % 2 == 0) {
-            document.getElementById("player1box").style.color = "white";
-            document.getElementById("player2box").style.color = "green";
+            document.getElementById("player1box").style.color = "green";
+            document.getElementById("player2box").style.color = "white";
         }
         else {
-            document.getElementById("player2box").style.color = "white";
-            document.getElementById("player1box").style.color = "green";
+            document.getElementById("player2box").style.color = "green";
+            document.getElementById("player1box").style.color = "white";
         }
     }
     var question;
