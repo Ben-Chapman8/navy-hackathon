@@ -1,161 +1,179 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    
-    <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <meta charset="UTF-8">
-    
-        <title>JEOPARDY!</title>
-    
-        <style>
-            div{
+<head>
+  <meta charset="UTF-8">
+  <title>Jeopardy</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+      div{
                 font-family: Arial, Helvetica, sans-serif;
                 background-color: #060CE9;
                 text-align: center;
                 outline: 5px solid black;
                 text-shadow: 2px 2px black;
             }
-        </style>
-    
-    </head>
-    
-    <body>
-
-        <div class="container" style="position:relative; top:200px">
-
-            <!-- Row 1: Category Headers -->
-            <div class="row" style="color: #ffffff">
-                <div class="col-2">
-                    <h1 style="font-size: 35px">SCIENCE</h1>
+  </style>
+  <style src = >
+      td{
+                font-family: fantasy;
+                font-size: larger;
+      }
+  </style>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src = "questions.js"></script>
+</head>
+<body style = "background-color:royalBlue;">
+    ​        <div class="container" style="position:relative;visibility:visible;text-align:center;" id = "inputBox">
+                <div class = "row">
+                    <div class="col-4" style="color:royalblue">.</div>
+                    <div class="col-4">
+                    <input type="text" id="userInput" placeholder="Type your answer!"><br>
+                    <div id="submit" style="background-color:white;width:50%;display:inline">Submit Answer</div></div>
+                    <div class="col-4" style="color:royalblue">.</div>
                 </div>
-                <div class="col-2">
-                    <h1 style="font-size: 25px">LITERATURE</h1>
+                <div class= "row"><div class="col-12" id="questionBox" style="text-align:center;color:white"></div></div>
+            </div> 
+            <div style="color:white;position:absolute;top:25%;width:100%;visibility:visible;background-color:royalblue;border-style:solid;border-color:black;border-width:10px;font-size:50px;z-index:1000" id="gameover" ></div>
+            <div class="container" style="position:relative;">
+    ​
+                <!-- Row 1: Category Headers -->
+                <div class="row" style="color: #ffffff">
+                    <div class="col-2">
+                        <h1 style="font-size: 35px">SCIENCE</h1>
+                    </div>
+                    <div class="col-2">
+                        <h1 style="font-size: 25px">LITERATURE</h1>
+                    </div>
+                    <div class="col-2">
+                        <h1 style="font-size: 25px">WORLD <br> HISTORY</h1>
+                    </div>
+                    <div class="col-2">
+                        <h1 style="font-size: 35px">SPORTS</h1>
+                    </div>
+                    <div class="col-2">
+                        <h1 style="font-size: 35px">MOVIES</h1>
+                    </div>
+                    <div class="col-2">
+                        <h1 style="font-size: 35px">MUSIC</h1>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <h1 style="font-size: 25px">WORLD <br> HISTORY</h1>
+                
+                <!-- Row 2: $100 Questions -->
+                <div class="row" style="color:#FFCC00" >
+                    <div class="col-2" id="Science-1">
+                        <h1>$100</h1>
+                    </div>
+                    <div class="col-2" id="Literature-1">
+                        <h1>$100</h1>
+                    </div>
+                    <div class="col-2" id="History-1">
+                        <h1>$100</h1>
+                    </div>
+                    <div class="col-2" id="Sports-1">
+                        <h1>$100</h1>
+                    </div>
+                    <div class="col-2" id="Movies-1">
+                        <h1>$100</h1>
+                    </div>
+                    <div class="col-2" id="Music-1">
+                        <h1>$100</h1>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <h1 style="font-size: 35px">SPORTS</h1>
-                </div>
-                <div class="col-2">
-                    <h1 style="font-size: 35px">MOVIES</h1>
-                </div>
-                <div class="col-2">
-                    <h1 style="font-size: 35px">MUSIC</h1>
-                </div>
-            </div>
             
-            <!-- Row 2: $100 Questions -->
-            <div class="row" style="color:#FFCC00" >
-                <div class="col-2" id="science-1">
-                    <h1>$100</h1>
+                <!-- Row 3: $200 Questions -->
+                <div class="row" style="color:#FFCC00">
+                    <div class="col-2" id="Science-2">
+                        <h1>$200</h1>
+                    </div>
+                    <div class="col-2" id="Literature-2">
+                        <h1>$200</h1>
+                    </div>
+                    <div class="col-2" id="History-2">
+                        <h1>$200</h1>
+                    </div>
+                    <div class="col-2" id="Sports-2">
+                        <h1>$200</h1>
+                    </div>
+                    <div class="col-2" id="Movies-2">
+                        <h1>$200</h1>
+                    </div>
+                    <div class="col-2" id="Music-2">
+                        <h1>$200</h1>
+                    </div>
                 </div>
-                <div class="col-2" id="literature-1">
-                    <h1>$100</h1>
+    ​
+                <!-- Row 4: $300 Questions -->
+                <div class="row" style="color:#FFCC00">
+                    <div class="col-2" id="Science-3">
+                        <h1>$300</h1>
+                    </div>
+                    <div class="col-2" id="Literature-3">
+                        <h1>$300</h1>
+                    </div>
+                    <div class="col-2" id="History-3">
+                        <h1>$300</h1>
+                    </div>
+                    <div class="col-2" id="Sports-3">
+                        <h1>$300</h1>
+                    </div>
+                    <div class="col-2" id="Movies-3">
+                        <h1>$300</h1>
+                    </div>
+                    <div class="col-2" id="Music-3">
+                        <h1>$300</h1>
+                    </div>
                 </div>
-                <div class="col-2" id="worldHistory-1">
-                    <h1>$100</h1>
+    ​
+                <!-- Row 5: $400 Questions -->
+                <div class="row" style="color:#FFCC00">
+                    <div class="col-2" id="Science-4">
+                        <h1>$400</h1>
+                    </div>
+                    <div class="col-2" id="Literature-4">
+                        <h1>$400</h1>
+                    </div>
+                    <div class="col-2" id="History-4">
+                        <h1>$400</h1>
+                    </div>
+                    <div class="col-2" id="Sports-4">
+                        <h1>$400</h1>
+                    </div>
+                    <div class="col-2" id="Movies-4">
+                        <h1>$400</h1>
+                    </div>
+                    <div class="col-2" id="Music-4">
+                        <h1>$400</h1>
+                    </div>
                 </div>
-                <div class="col-2" id="sports-1">
-                    <h1>$100</h1>
+    ​
+                <!-- Row 6: $500 Questions -->
+                <div class="row" style="color:#FFCC00">
+                    <div class="col-2" id="Science-5">
+                        <h1>$500</h1>
+                    </div>
+                    <div class="col-2" id="Literature-5">
+                        <h1>$500</h1>
+                    </div>
+                    <div class="col-2" id="History-5">
+                        <h1>$500</h1>
+                    </div>
+                    <div class="col-2" id="Sports-5">
+                        <h1>$500</h1>
+                    </div>
+                    <div class="col-2" id="Movies-5">
+                        <h1>$500</h1>
+                    </div>
+                    <div class="col-2" id="Music-5">
+                        <h1>$500</h1>
+                    </div>
                 </div>
-                <div class="col-2" id="movies-1">
-                    <h1>$100</h1>
-                </div>
-                <div class="col-2" id="music-1">
-                    <h1>$100</h1>
-                </div>
-            </div>
-        
-            <!-- Row 3: $200 Questions -->
-            <div class="row" style="color:#FFCC00">
-                <div class="col-2" id="science-2">
-                    <h1>$200</h1>
-                </div>
-                <div class="col-2" id="literature-2">
-                    <h1>$200</h1>
-                </div>
-                <div class="col-2" id="worldHistory-2">
-                    <h1>$200</h1>
-                </div>
-                <div class="col-2" id="sports-2">
-                    <h1>$200</h1>
-                </div>
-                <div class="col-2" id="movies-2">
-                    <h1>$200</h1>
-                </div>
-                <div class="col-2" id="music-2">
-                    <h1>$200</h1>
-                </div>
-            </div>
-
-            <!-- Row 4: $300 Questions -->
-            <div class="row" style="color:#FFCC00">
-                <div class="col-2" id="science-3">
-                    <h1>$300</h1>
-                </div>
-                <div class="col-2" id="literature-3">
-                    <h1>$300</h1>
-                </div>
-                <div class="col-2" id="worldHistory-3">
-                    <h1>$300</h1>
-                </div>
-                <div class="col-2" id="sports-3">
-                    <h1>$300</h1>
-                </div>
-                <div class="col-2" id="movies-3">
-                    <h1>$300</h1>
-                </div>
-                <div class="col-2" id="music-3">
-                    <h1>$300</h1>
-                </div>
-            </div>
-
-            <!-- Row 5: $400 Questions -->
-            <div class="row" style="color:#FFCC00">
-                <div class="col-2" id="science-2">
-                    <h1>$400</h1>
-                </div>
-                <div class="col-2" id="literature-4">
-                    <h1>$400</h1>
-                </div>
-                <div class="col-2" id="worldHistory-4">
-                    <h1>$400</h1>
-                </div>
-                <div class="col-2" id="sports-4">
-                    <h1>$400</h1>
-                </div>
-                <div class="col-2" id="movies-4">
-                    <h1>$400</h1>
-                </div>
-                <div class="col-2" id="music-4">
-                    <h1>$400</h1>
-                </div>
-            </div>
-
-            <!-- Row 6: $500 Questions -->
-            <div class="row" style="color:#FFCC00">
-                <div class="col-2" id="science-5">
-                    <h1>$500</h1>
-                </div>
-                <div class="col-2" id="literature-5">
-                    <h1>$500</h1>
-                </div>
-                <div class="col-2" id="worldHistory-5">
-                    <h1>$500</h1>
-                </div>
-                <div class="col-2" id="sports-5">
-                    <h1>$500</h1>
-                </div>
-                <div class="col-2" id="movies-5">
-                    <h1>$500</h1>
-                </div>
-                <div class="col-2" id="music-5">
-                    <h1>$500</h1>
+                <div class="row">
+                    <div class="col-4" style="font-size:30px;color:green;text-align:center" id="player1box">Player 1: 0 points</div>
+                    <div class="col-4" style="font-size:30px;color:white;text-align:center" id="player2box">Player 2: 0 points</div>
+                    <div class="col-4" style="font-size:30px;color:white;text-align:center" id="questionsbox">Questions left: 30</div>
                 </div>
             </div>
-        </div>
-
-    </body>
+    ​
+        </body>
 
 </html>

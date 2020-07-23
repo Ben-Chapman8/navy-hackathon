@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    $("#gameover").hide()
     if(true){
         var lit1 = ["This author is best known for writing the Harry Potter series.", "JK Rowling", "literature", 100, true];
         var lit2 = ["Don Quixote was originally written in this language.", "Spanish", "literature", 200, true];
@@ -9,7 +10,7 @@ $(document).ready(function(){
         var sci1 = ["About one-millionth as bright as our sun, these small red stars are also known as flare stars.", "Dwarf Stars", "Science", 100, true];
         var sci2 = ["This physics term refers to the study of extremely low temperatures.", "Cryogenics", "Science", 200, true];
         var sci3 = ["Light energy can be studied as these massless quantum units.", "Photons", "Science", 300, true];
-        var sci4 = ["Compounds that have the same molecular formula but have different molecular structures?", "Isomer", "Science", 400, true];
+        var sci4 = ["Compounds that have the same molecular formula but have different molecular structures.", "Isomer", "Science", 400, true];
         var sci5 = ["Elements that have the same atomic number but varying numbers of neutrons that are unstable (nucleus does not remain intact) and give off energy as they try to become stable.", "Radioactive Isotopes", "Science", 500, true];
 
         var hist1 = ["The Statue of Liberty was a gift to the United States of America from this European country.", "France", "World History", 100, true];
@@ -25,7 +26,7 @@ $(document).ready(function(){
         var music5 = ["In 1826, at just 17, he produced the dazzling Midsummer Night's Dream Overture.", "Felix Mendelssohn", "Music", 500, true];
 
         var sports1 = ["The Olympics are held once every this amount of years.", "Four", "Sports", 100, true];
-        var sports2 = ["This woman has won the most tennis grand slams.", "Serene Williams", "Sports", 200, true];
+        var sports2 = ["This woman has won the most tennis grand slams.", "Serena Williams", "Sports", 200, true];
         var sports3 = ["This sport is Canada's national sport.", "Lacrosse", "Sports", 300, true];
         var sports4 = ["This American Football team won the first two Super Bowls.", "Green Bay Packers", "Sports", 400, true];
         var sports5 = ["This country won the first ever soccer World Cup in 1930.", "Uruguay", "Sports", 500, true];
@@ -42,6 +43,7 @@ $(document).ready(function(){
     var player2points = 0;
     var turn = 0;
 
+
     function checkAnswer(guess, correctAnswer){
         if(guess == "4"){
             guess = "four";
@@ -54,424 +56,363 @@ $(document).ready(function(){
     function points(turnNum, question){
         if(turnNum % 2 ==0){
             player1points += question[3];
+            $("#player1box").text("Player 1: " + player1points + " points");
         }
         else {
             player2points += question[3];
+            $("#player2box").text("Player 2: " + player2points + " points");
         }
     }
+    function getAnswer(){
+        var input = $("#userInput").val();
+        return (input);
+    }
+
+
+    var question;
+    var questionID;
+    var guessing = false;
     if(questions > 0){
 
+        function alternator(x) {
+            if(x % 2 == 0) {
+                document.getElementById("player1box").style.color = "white";
+                document.getElementById("player2box").style.color = "green";
+            }
+            else {
+                document.getElementById("player2box").style.color = "white";
+                document.getElementById("player1box").style.color = "green";
+            }
+        }
+        $("#submit").on("click", function(){
+            alternator(questions);
+            var guess = getAnswer();
+            if(checkAnswer(guess, question)){
+                points(turn, question);
+                questions--;
+                question[4] = false;
+                $(questionID).css("color", "#060CE9");
+                $(questionID).css("text-shadow", "#060CE9");
+                $("#questionBox").text("");
+                document.getElementById("questionsbox").textContent = ("Questions left: " + questions);
+            }
+            turn++;
+            guessing = false;
+            document.getElementById("userInput").value = "";
+        });
         $("#Literature-1").on("click", function(){
-            if(lit1[4]){
-                var guess = prompt(lit1[0]);
-                if(checkAnswer(guess, lit1)){
-                    points(turn, lit1);
-                    questions--;
-                    lit1[4] = false;
-                    $("#Literature-1").text("");
-                }
-                turn++;
+            if(lit1[4] && !guessing){
+                question = lit1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Literature-1";
+                lit1[4] = false;
+                guessing = true;
             }
         })
 
         $("#Literature-2").on("click", function(){
-            if(lit2[4]){
-                var guess = prompt(lit2[0]);
-                if(checkAnswer(guess, lit2)){
-                    points(turn, lit2);
-                    questions--;
-                    lit2[4] = false;
-                    $("#Literature-2").text("");
-                }
-                turn++;
+            if(lit2[4] && !guessing){
+                question = lit2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Literature-2";
+                lit2[4] = false;
+                guessing = true;
             }
         })
 
         $("#Literature-3").on("click", function(){
-            if(lit3[4]){
-                var guess = prompt(lit3[0]);
-                if(checkAnswer(guess, lit3)){
-                    points(turn, lit3);
-                    questions--;
-                    lit3[4] = false;
-                    $("#Literature-3").text("");
-                }
-                turn++;
+            if(lit3[4] && !guessing){
+                question = lit3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Literature-3";
+                lit3[4] = false;
+                guessing = true;
             }
         })
 
         $("#Literature-4").on("click", function(){
-            if(lit4[4]){
-                var guess = prompt(lit4[0]);
-                if(checkAnswer(guess, lit4)){
-                    points(turn, lit4);
-                    questions--;
-                    lit4[4] = false;
-                    $("#Literature-4").text("");
-                }
-                turn++;
+            if(lit4[4] && !guessing){
+                question = lit4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Literature-4";
+                lit4[4] = false;
+                guessing = true;
             }
         })
 
         $("#Literature-5").on("click", function(){
-            if(lit5[4]){
-                var guess = prompt(lit5[0]);
-                if(checkAnswer(guess, lit5)){
-                    points(turn, lit5);
-                    questions--;
-                    lit5[4] = false;
-                    $("#Literature-5").text("");
-                }
-                turn++;
+            if(lit5[4] && !guessing){
+                question = lit5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Literature-5";
+                lit5[4] = false;
+                guessing = true;
             }
         })
 
         $("#Science-1").on("click", function(){
-            if(sci1[4]){
-                var guess = prompt(sci1[0]);
-                if(checkAnswer(guess, sci1)){
-                    points(turn, sci1);
-                    questions--;
-                    sci1[4] = false;
-                    $("#Science-1").text("");
-                }
-                turn++;
+            if(sci1[4] && !guessing){
+                question = sci1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Science-1";
+                sci1[4] = false;
+                guessing = true;
             }
         })
 
         $("#Science-2").on("click", function(){
-            if(sci2[4]){
-                var guess = prompt(sci2[0]);
-                if(checkAnswer(guess, sci2)){
-                    points(turn, sci2);
-                    questions--;
-                    sci2[4] = false;
-                    $("#Science-2").text("");
-                }
-                turn++;
+            if(sci2[4] && !guessing){
+                question = sci2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Science-2";
+                sci2[4] = false;
+                guessing = true;
             }
         })
 
         $("#Science-3").on("click", function(){
-            if(sci3[4]){
-                var guess = prompt(sci3[0]);
-                if(checkAnswer(guess, sci3)){
-                    points(turn, sci3);
-                    questions--;
-                    sci3[4] = false;
-                    $("#Science-3").text("");
-                }
-                turn++;
+            if(sci3[4] && !guessing){
+                question = sci3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Science-3";
+                sci3[4] = false;
+                guessing = true;
             }
         })
 
         $("#Science-4").on("click", function(){
-            if(sci4[4]){
-                var guess = prompt(sci4[0]);
-                if(checkAnswer(guess, sci4)){
-                    points(turn, sci4);
-                    questions--;
-                    sci4[4] = false;
-                    $("#Science-4").text("");
-                }
-                turn++;
+            if(sci4[4] && !guessing){
+                question = sci4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Science-4";
+                sci4[4] = false;
+                guessing = true;
             }
         })
 
         $("#Science-5").on("click", function(){
-            if(sci5[4]){
-                var guess = prompt(sci5[0]);
-                if(checkAnswer(guess, sci5)){
-                    points(turn, sci5);
-                    questions--;
-                    sci5[4] = false;
-                    $("#Science-5").text("");
-                }
-                turn++;
+            if(sci5[4] && !guessing){
+                question = sci5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Science-5";
+                sci5[4] = false;
+                guessing = true;
             }
         })
 
         $("#History-1").on("click", function(){
-            if(hist1[4]){
-                var guess = prompt(hist1[0]);
-                if(checkAnswer(guess, hist1)){
-                    points(turn, hist1);
-                    questions--;
-                    hist1[4] = false;
-                    $("#History-1").text("");
-                }
-                turn++;
+            if(hist1[4] && !guessing){
+                question = hist1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#History-1";
+                hist1[4] = false;
+                guessing = true;
             }
         })
 
         $("#History-2").on("click", function(){
-            if(hist2[4]){
-                var guess = prompt(hist2[0]);
-                if(checkAnswer(guess, hist2)){
-                    points(turn, hist2);
-                    questions--;
-                    hist2[4] = false;
-                    $("#History-2").text("");
-                }
-                turn++;
+            if(hist2[4] && !guessing){
+                question = hist2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#History-2";
+                hist2[4] = false;
+                guessing = true;
             }
         })
 
         $("#History-3").on("click", function(){
-            if(hist3[4]){
-                var guess = prompt(hist3[0]);
-                if(checkAnswer(guess, hist3)){
-                    points(turn, hist3);
-                    questions--;
-                    hist3[4] = false;
-                    $("#History-3").text("");
-                }
-                turn++;
+            if(hist3[4] && !guessing){
+                question = hist3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#History-3";
+                hist3[4] = false;
+                guessing = true;
             }
         })
 
         $("#History-4").on("click", function(){
-            if(hist4[4]){
-                var guess = prompt(hist4[0]);
-                if(checkAnswer(guess, hist4)){
-                    points(turn, hist4);
-                    questions--;
-                    hist4[4] = false;
-                    $("#History-4").text("");
-                }
-                turn++;
+            if(hist4[4] && !guessing){
+                question = hist4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#History-4";
+                hist4[4] = false;
+                guessing = true;
             }
         })
 
         $("#History-5").on("click", function(){
-            if(hist5[4]){
-                var guess = prompt(hist5[0]);
-                if(checkAnswer(guess, hist5)){
-                    points(questions, hist5);
-                    questions--;
-                    hist5[4] = false;
-                    $("#History-5").text("");
-                }
-                turn++;
+            if(hist5[4] && !guessing){
+                question = hist5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#History-5";
+                hist5[4] = false;
+                guessing = true;
             }
         })
 
         $("#Music-1").on("click", function(){
-            if(music1[4]){
-                var guess = prompt(music1[0]);
-                if(checkAnswer(guess, music1)){
-                    points(turn, music1);
-                    questions--;
-                    music1[4] = false;
-                    $("#Music-1").text("");
-                }
-                turn++;
+            if(music1[4] && !guessing){
+                question = music1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Music-1";
+                music1[4] = false;
+                guessing = true;
             }
         })
 
         $("#Music-2").on("click", function(){
-            if(music2[4]){
-                var guess = prompt(music2[0]);
-                if(checkAnswer(guess, music2)){
-                    points(turn, music2);
-                    questions--;
-                    music2[4] = false;
-                    $("#Music-2").text("");
-                }
-                turn++;
+            if(music2[4] && !guessing){
+                question = music2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Music-2";
+                music2[4] = false;
+                guessing = true;
             }
         })
 
         $("#Music-3").on("click", function(){
-            if(music3[4]){
-                var guess = prompt(music3[0]);
-                if(checkAnswer(guess, music3)){
-                    points(turn, music3);
-                    questions--;
-                    music3[4] = false;
-                    $("#Music-3").text("");
-                }
-                turn++;
+            if(music3[4] && !guessing){
+                question = music3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Music-3";
+                music3[4] = false;
+                guessing = true;
             }
         })
 
         $("#Music-4").on("click", function(){
-            if(music4[4]){
-                var guess = prompt(music4[0]);
-                if(checkAnswer(guess, music4)){
-                    points(turn, music4);
-                    questions--;
-                    music4[4] = false;
-                    $("#Music-4").text("");
-                }
-                turn++;
+            if(music4[4] && !guessing){
+                question = music4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Music-4";
+                music4[4] = false;
+                guessing = true;
             }
         })
 
         $("#Music-5").on("click", function(){
-            if(music5[4]){
-                var guess = prompt(music5[0]);
-                if(checkAnswer(guess, music5)){
-                    points(turn, music5);
-                    questions--;
-                    music5[4] = false;
-                    $("#Music-5").text("");
-                }
-                turn++;
+            if(music5[4] && !guessing){
+                question = music5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Music-5";
+                music5[4] = false;
+                guessing = true;
             }
         })
 
         $("#Sports-1").on("click", function(){
-            if(sports1[4]){
-                var guess = prompt(sports1[0]);
-                if(checkAnswer(guess, sports1)){
-                    points(turn, sports1);
-                    questions--;
-                    sports1[4] = false;
-                    $("#Sports-1").text("");
-                }
-                turn++;
+            if(sports1[4] && !guessing){
+                question = sports1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Sports-1";
+                sports1[4] = false;
+                guessing = true;
             }
         })
 
         $("#Sports-2").on("click", function(){
-            if(sports2[4]){
-                var guess = prompt(sports2[0]);
-                if(checkAnswer(guess, sports2)){
-                    points(turn, sports2);
-                    questions--;
-                    sports2[4] = false;
-                    $("#Sports-2").text("");
-                }
-                turn++;
+            if(sports2[4] && !guessing){
+                question = sports2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Sports-2";
+                sports2[4] = false;
+                guessing = true;
             }
         })
 
         $("#Sports-3").on("click", function(){
-            if(sports3[4]){
-                var guess = prompt(sports3[0]);
-                if(checkAnswer(guess, sports3)){
-                    points(turn, sports3);
-                    questions--;
-                    sports3[4] = false;
-                    $("#Sports-3").text("");
-                }
-                turn++;
+            if(sports3[4] && !guessing){
+                question = sports3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Sports-3";
+                sports3[4] = false;
+                guessing = true;
             }
         })
 
         $("#Sports-4").on("click", function(){
-            if(sports4[4]){
-                var guess = prompt(sports4[0]);
-                if(checkAnswer(guess, sports4)){
-                    points(turn, sports4);
-                    questions--;
-                    sports4[4] = false;
-                    $("#Sports-4").text("");
-                }
-                turn++;
+            if(sports4[4] && !guessing){
+                question = sports4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Sports-4";
+                sports4[4] = false;
+                guessing = true;
             }
         })
 
         $("#Sports-5").on("click", function(){
-            if(sports5[4]){
-                var guess = prompt(sports5[0]);
-                if(checkAnswer(guess, sports5)){
-                    points(turn, sports5);
-                    questions--;
-                    sports5[4] = false;
-                    $("#Sports-5").text("");
-                }
-                turn++;
+            if(sports5[4] && !guessing){
+                question = sports5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Sports-5";
+                sports5[4] = false;
+                guessing = true;
             }
         })
 
         $("#Movies-1").on("click", function(){
-            if(movies1[4]){
-                var guess = prompt(movies1[0]);
-                if(checkAnswer(guess, movies1)){
-                    points(turn, movies1);
-                    questions--;
-                    movies1[4] = false;
-                    $("#Movies-1").text("");
-                }
-                turn++;
+            if(movies1[4] && !guessing){
+                question = movies1;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Movies-1";
+                movies1[4] = false;
+                guessing = true;
             }
         })
 
         $("#Movies-2").on("click", function(){
-            if(movies2[4]){
-                var guess = prompt(movies2[0]);
-                if(checkAnswer(guess, movies2)){
-                    points(turn, movies2);
-                    questions--;
-                    movies2[4] = false;
-                    $("#Movies-2").text("");
-                }
-                turn++;
+            if(movies2[4] && !guessing){
+                question = movies2;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Movies-2";
+                movies2[4] = false;
+                guessing = true;
             }
         })
 
         $("#Movies-3").on("click", function(){
-            if(movies3[4]){
-                var guess = prompt(movies3[0]);
-                if(checkAnswer(guess, movies3)){
-                    points(turn, movies3);
-                    questions--;
-                    movies3[4] = false;
-                    $("#Movies-3").text("");
-                }
-                turn++;
+            if(movies3[4] && !guessing){
+                question = movies3;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Movies-3";
+                movies3[4] = false;
+                guessing = true;
             }
         })
 
         $("#Movies-4").on("click", function(){
-            if(movies4[4]){
-                var guess = prompt(movies4[0]);
-                if(checkAnswer(guess, movies4)){
-                    points(turn, movies4);
-                    questions--;
-                    movies4[4] = false;
-                    $("#Movies-4").text("");
-                }
-                turn++;
+            if(movies4[4] && !guessing){
+                question = movies4;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Movies-4";
+                movies4[4] = false;
+                guessing = true;
             }
         })
 
         $("#Movies-5").on("click", function(){
-            if(movies5[4]){
-                var guess = prompt(movies5[0]);
-                if(checkAnswer(guess, movies5)){
-                    points(turn, movies5);
-                    questions--;
-                    movies5[4] = false;
-                    $("#Movies-5").text("");
-                }
-                turn++;
+            if(movies5[4] && !guessing){
+                question = movies5;
+                $("#questionBox").text(""+question[0]);
+                questionID = "#Movies-5";
+                movies5[4] = false;
+                guessing = true;
             }
         })
     }
 
+    $(document).on("click", function(){
     if(questions <= 0){
-        var div = document.createElement("div");
-        div.style.width = "200px";
-        div.style.height = "200px";
-        div.style.backgroundColor = "royalblue";
-        div.style.fontFamily = "fantasy";
-        div.style.fontSize = "larger";
-        div.style.color = "white";
-        div.style.textAlign = "center";
-        document.appendChild(div);
-        div.style.position = "fixed";
-        div.style.top = "25%";
+        
+        $("#gameover").show();
         if(player1points > player2points){    
-            div.innerHTML = "Player 1 wins with " + player1points + " points!";
+            $("#gameover").text("Player 1 wins with " + player1points + " points!");
         }
         else if(player1points < player2points){    
-            div.innerHTML = "Player 2 wins with " + player2points + " points!";
+            $("#gameover").text("Player 2 wins with " + player2points + " points!");
         }
         else {    
-            div.innerHTML = "It's a tie with " + player2points + " points for both players!";
+            $("#gameover").text("It's a tie with " + player2points + " points for both players!");
         }
-    }
+    }});
 });
