@@ -68,24 +68,23 @@ $(document).ready(function(){
         return (input);
     }
 
-
+    function alternator(x) {
+        if(x % 2 == 0) {
+            document.getElementById("player1box").style.color = "white";
+            document.getElementById("player2box").style.color = "green";
+        }
+        else {
+            document.getElementById("player2box").style.color = "white";
+            document.getElementById("player1box").style.color = "green";
+        }
+    }
     var question;
     var questionID;
     var guessing = false;
     if(questions > 0){
 
-        function alternator(x) {
-            if(x % 2 == 0) {
-                document.getElementById("player1box").style.color = "white";
-                document.getElementById("player2box").style.color = "green";
-            }
-            else {
-                document.getElementById("player2box").style.color = "white";
-                document.getElementById("player1box").style.color = "green";
-            }
-        }
+        
         $("#submit").on("click", function(){
-            alternator(turn);
             var guess = getAnswer();
             if(checkAnswer(guess, question)){
                 points(turn, question);
@@ -97,6 +96,7 @@ $(document).ready(function(){
                 document.getElementById("questionsbox").textContent = ("Questions left: " + questions);
             }
             turn++;
+            alternator(turn);
             guessing = false;
             document.getElementById("userInput").value = "";
         });
